@@ -227,21 +227,23 @@ def insert_data():
     # Try inserting financial data
 
     for obj in financial_data:
-
-        current_data = financial_data[obj]
-        current_data['stock_id'] = id
-        # print("Current data " + str(current_data))
-        financials_query = {"type":"insert",
-                "args":{
-                    "table":"stock_financial_data",
-                    "objects":[current_data]
-                    }
-                }
-
         try:
-            # print("-----  Financial Query " + str(financials_query))
-            resp = requests.post(data_url, headers=headers, data=json.dumps(financials_query), timeout=30)
-            print("Response: " + str(resp.content))
+            current_data = financial_data[obj]
+            current_data['stock_id'] = id
+            # print("Current data " + str(current_data))
+            financials_query = {"type":"insert",
+                    "args":{
+                        "table":"stock_financial_data",
+                        "objects":[current_data]
+                        }
+                    }
+
+            try:
+                # print("-----  Financial Query " + str(financials_query))
+                resp = requests.post(data_url, headers=headers, data=json.dumps(financials_query), timeout=30)
+                print("Response: " + str(resp.content))
+            except Exception as e:
+                print("Error: %s" % str(e))
         except Exception as e:
             print("Error: %s" % str(e))
 
@@ -275,6 +277,6 @@ def delete_all():
     except Exception as e:
         print("Error: %s" % str(e))
 # Now call the main fetch_urls function
-
-# delete_all()
+delete_all()
 fetch_urls()
+
