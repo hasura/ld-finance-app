@@ -2,7 +2,8 @@
 
 - Create a Hasura project (Let's say <project-name>)
 - Login to the project console at console.<project-name>.hasura-app.io
-- Import the schema.json, or create your own tables based on the schema
+- Import the project.json, or create your own tables based on the schema.json
+    and add relationships
 - Add data using the scraper python script( Make sure you run a `pip install -r
     requirements.txt` before you run the scraper)
 - Install [hasuractl](https://docs.hasura.io/0.14/ref/cli/hasuractl.html)
