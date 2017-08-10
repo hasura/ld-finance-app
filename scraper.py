@@ -8,11 +8,10 @@ import math
 print("Starting script")
 stock_data = {}
 financial_data = {}
-# project_url = "https://data.callback66.hasura-app.io/"
-project_url = "http://data.hasura/"
+project_url = "https://data.<YOUR-HASURA-PROJECT-NAME>.hasura-app.io/"
 
 # Keep your token secret
-headers = {"Content-Type":"application/json", "X-Hasura-Role":"admin","X-Hasura-User-Id":"1"}
+headers = {"Content-Type":"application/json", "Authorization":"Bearer <YOUR-ADMIN-TOKEN-HERE>"}
 
 # First get the Balance sheet and profit/loss urls for each company
 def fetch_urls():
