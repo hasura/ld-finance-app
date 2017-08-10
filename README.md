@@ -1,38 +1,22 @@
-# Quickstart - Build your own Docker image#
+# Setting up the app on Hasura
 
-Build the Docker image using the following command
+- Create a Hasura project (Let's say <project-name>)
+- Login to the project console at console.<project-name>.hasura-app.io
+- Import the schema.json, or create your own tables based on the schema
+- Add data using the scraper python script( Make sure you run a `pip install -r
+    requirements.txt` before you run the scraper)
+- Install [hasuractl](https://docs.hasura.io/0.14/ref/cli/hasuractl.html)
+- Login to hasuractl using `hasuractl login`
+- Set up your hasura project using `hasuractl set-context <project-name>`
+- Use the following command to set up a quickstart git push service
 
 ```bash
-$ docker build -t nodejs-express:<tag> .
+    $ hasuractl quickstart nodejs-express <app-name> --create
 ```
 
-Run the Docker container using the command below.
-
+- Now cd into the <app-name> folder, delete the contents, copy this
+    repositories contents into it and do a `git add . --all`,  `git commit -m "<message>"` and
+    then deploy with 
 ```bash
-$ docker run -d -p 8080:8080 nodejs-express:<tag>
+    $ git push hasura master
 ```
-
-# Quickstart - git based pipeline
-
-Follow the steps mentioned below for git based pipeline
-
-1. Ensure that you have a git project
-2. Edit `app/src/server.js`
-3. Commit your changes
-
-    ```bash
-    $ git add .
-    $ git commit -m "message"
-    ```
-
-4. Push the changes to git
-
-    ```bash
-    $ git push <remote> master
-    ```
-
-# Advanced usage
-
-### **Port**
-
-Default Port for application is `8080` .
